@@ -1,0 +1,45 @@
+<div class="local-gamify-dashboard container">
+
+  <h2>{{userfullname}} — XP Dashboard</h2>
+  <p class="muted">Site: {{{sitename}}}</p>
+
+  <div class="card mb-3">
+    <div class="card-body">
+      <h4 class="card-title">Total XP: <strong>{{total_xp}}</strong></h4>
+      <p>Level: <strong>{{level}}</strong></p>
+
+      <div class="progress" role="progressbar" aria-valuemin="{{min}}" aria-valuemax="{{max}}" aria-valuenow="{{total_xp}}">
+        <div class="progress-bar" style="width: {{progress}}%;">
+          {{progress}}%
+        </div>
+      </div>
+
+      <p class="mt-2 small text-muted">Progress to next level ({{min}} → {{max}})</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Recent XP Events</h5>
+
+      {{#hasevents}}
+        <ul class="list-group">
+          {{#events}}
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+              <div>
+                <div><strong>{{points}} XP</strong> — {{source}}</div>
+                {{#reason}}<div class="small text-muted">{{reason}}</div>{{/reason}}
+                <div class="small text-muted">By: {{grader}} • {{time}}</div>
+              </div>
+            </li>
+          {{/events}}
+        </ul>
+      {{/hasevents}}
+
+      {{^hasevents}}
+        <p class="text-muted">No XP events found yet. Do an assignment to earn points!</p>
+      {{/hasevents}}
+    </div>
+  </div>
+
+</div>
