@@ -1,0 +1,119 @@
+<div class="gamify-wrapper">
+
+    <!-- PAGE TITLE -->
+    <h2 class="premium-title">
+        <span class="title-icon">🎓</span>
+        Teacher XP Dashboard
+    </h2>
+
+    <!-- COURSE SELECTOR -->
+    <div class="premium-card selector-card">
+        <label class="premium-label">Select Course</label>
+
+        <form method="get">
+            <select name="courseid"
+                    class="premium-select"
+                    onchange="this.form.submit()">
+                {{#courselist}}
+                <option value="{{id}}" {{#selected}}selected{{/selected}}>
+                    {{fullname}}
+                </option>
+                {{/courselist}}
+            </select>
+        </form>
+    </div>
+
+    {{#hascourse}}
+
+    <!-- COURSE HEADER -->
+    <div class="premium-card course-card fade-in">
+        <div class="course-name">
+            <span class="course-icon">📘</span>
+            {{coursename}}
+        </div>
+    </div>
+
+    <!-- LEADERBOARD -->
+<div class="premium-card leaderboard-card fade-in">
+    <h3 class="section-title">🏆 Leaderboard</h3>
+
+    {{#hasstudents}}
+        {{#leaderboard}}
+        <div class="leader-entry premium-hover">
+
+            <!-- Rank badge -->
+            <div class="rank-badge rank-{{rank}}">
+                {{rank}}
+            </div>
+
+            <!-- Student block -->
+            <div class="leader-info-block">
+
+                <!-- Avatar -->
+                <div class="avatar avatar-ring rank-{{rank}}">
+                    <img src="{{profileimg}}">
+                </div>
+
+                <!-- Name + XP -->
+                <div class="leader-text">
+                    <div class="leader-name">{{fullname}}</div>
+                    <div class="leader-sub">Level {{level}} • {{xp}} XP</div>
+
+                    <div class="premium-progress">
+                        <div class="progress-fill" style="width: {{progress}}%;"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        {{/leaderboard}}
+
+        {{#showpagination}}
+        <div class="pagination-wrapper">
+            {{#prevpage}}
+            <a class="pagination-btn" href="?courseid={{courseid}}&page={{prevpage}}">← Previous</a>
+            {{/prevpage}}
+
+            {{#nextpage}}
+            <a class="pagination-btn" href="?courseid={{courseid}}&page={{nextpage}}">Next →</a>
+            {{/nextpage}}
+        </div>
+        {{/showpagination}}
+
+    {{/hasstudents}}
+
+    {{^hasstudents}}
+    <div class="empty-state fade-in">
+        No XP records yet.
+    </div>
+    {{/hasstudents}}
+</div>
+
+
+        <!-- PAGINATION -->
+        {{#showpagination}}
+        <div class="pagination-wrapper">
+
+            {{#prevpage}}
+            <a class="pagination-btn"
+               href="?courseid={{courseid}}&page={{prevpage}}&search={{searchquery}}">
+               ⬅ Previous
+            </a>
+            {{/prevpage}}
+
+            {{#nextpage}}
+            <a class="pagination-btn"
+               href="?courseid={{courseid}}&page={{nextpage}}&search={{searchquery}}">
+               Next ➜
+            </a>
+            {{/nextpage}}
+
+        </div>
+        {{/showpagination}}
+
+    </div>
+
+    {{/hascourse}}
+
+</div>

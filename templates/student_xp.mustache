@@ -1,45 +1,110 @@
-<div class="local-gamify-dashboard container">
+<div class="gamify-wrapper">
 
-  <h2>{{userfullname}} — XP Dashboard</h2>
-  <p class="muted">Site: {{{sitename}}}</p>
+    <!-- HEADER -->
+    <h2 class="premium-title">
+        <span class="title-icon">📊</span>
+        Your XP Progress
+    </h2>
 
-  <div class="card mb-3">
-    <div class="card-body">
-      <h4 class="card-title">Total XP: <strong>{{total_xp}}</strong></h4>
-      <p>Level: <strong>{{level}}</strong></p>
+    <!-- XP OVERVIEW -->
+    <div class="premium-card xp-card fade-in">
 
-      <div class="progress" role="progressbar" aria-valuemin="{{min}}" aria-valuemax="{{max}}" aria-valuenow="{{total_xp}}">
-        <div class="progress-bar" style="width: {{progress}}%;">
-          {{progress}}%
+        <div class="student-top">
+            <div class="avatar avatar-big">
+                <img src="https://ui-avatars.com/api/?name={{userfullname}}&background=007bff&color=fff&rounded=true&size=90">
+            </div>
+
+            <div class="student-info">
+                <div class="student-name">{{userfullname}}</div>
+                <div class="student-subtitle">Level {{level}} — {{total_xp}} XP</div>
+            </div>
         </div>
-      </div>
 
-      <p class="mt-2 small text-muted">Progress to next level ({{min}} → {{max}})</p>
+        <!-- LEVEL PROGRESS -->
+        <div class="premium-progress mt-3 large-progress">
+            <div class="progress-fill" style="width: {{progress}}%;"></div>
+        </div>
+
+        <div class="progress-caption">
+            Progress to next level ({{min}} → {{max}})
+        </div>
     </div>
-  </div>
 
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Recent XP Events</h5>
 
-      {{#hasevents}}
-        <ul class="list-group">
-          {{#events}}
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-              <div>
-                <div><strong>{{points}} XP</strong> — {{source}}</div>
-                {{#reason}}<div class="small text-muted">{{reason}}</div>{{/reason}}
-                <div class="small text-muted">By: {{grader}} • {{time}}</div>
-              </div>
-            </li>
-          {{/events}}
-        </ul>
-      {{/hasevents}}
+    <!-- RECENT XP EVENTS -->
+    <div class="premium-card fade-in">
+        <h3 class="section-title">✨ Recent XP Activity</h3>
 
-      {{^hasevents}}
-        <p class="text-muted">No XP events found yet. Do an assignment to earn points!</p>
-      {{/hasevents}}
+        {{#hasevents}}
+        <div class="event-list-premium">
+            {{#events}}
+            <div class="event-card fade-in">
+
+                <div class="event-left">
+                    <div class="event-xp">{{points}}</div>
+                    <div class="event-xp-label">XP</div>
+                </div>
+
+                <div class="event-right">
+                    <div class="event-title">{{source}}</div>
+
+                    {{#reason}}
+                    <div class="event-reason">✨ {{reason}}</div>
+                    {{/reason}}
+
+                    <div class="event-meta">
+                        Awarded by <strong>{{grader}}</strong> • {{time}}
+                    </div>
+                </div>
+
+            </div>
+            {{/events}}
+        </div>
+        {{/hasevents}}
+
+        {{^hasevents}}
+        <div class="empty-state fade-in">
+            No XP events yet. Start learning to earn XP!
+        </div>
+        {{/hasevents}}
     </div>
-  </div>
+
+
+    <!-- LEADERBOARD -->
+    <div class="premium-card fade-in">
+        <h3 class="section-title">🏆 Leaderboard</h3>
+
+        {{#leaderboard}}
+        <div class="leader-entry premium-hover">
+
+            <div class="rank-badge rank-{{rank}}">
+                {{rank}}
+            </div>
+
+            <div class="leader-info-block">
+
+                <div class="avatar avatar-ring rank-{{rank}}">
+                    <img src="{{profileimg}}">
+                </div>
+
+                <div class="leader-text">
+                    <div class="leader-name">{{fullname}}</div>
+                    <div class="leader-sub">Level {{level}} • {{xp}} XP</div>
+
+                    <div class="premium-progress small-bar">
+                        <div class="progress-fill" style="width: {{progress}}%;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {{/leaderboard}}
+
+        {{^leaderboard}}
+        <div class="empty-state fade-in">
+            No students found in leaderboard.
+        </div>
+        {{/leaderboard}}
+    </div>
 
 </div>
