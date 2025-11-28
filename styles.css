@@ -1,0 +1,320 @@
+/* ============================================================
+   GLOBAL WRAPPER & BASE (Shared by Teacher + Student UI)
+   ============================================================ */
+
+.gamify-wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: "Inter", sans-serif;
+}
+
+.premium-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.title-icon {
+    font-size: 34px;
+}
+
+/* Card style */
+.premium-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 28px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+    transition: 0.25s ease;
+}
+
+.premium-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* Section headings */
+.section-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+/* ============================================================
+   PROGRESS BARS
+   ============================================================ */
+
+.premium-progress {
+    width: 100%;
+    background: #e5e7eb;
+    border-radius: 20px;
+    height: 10px;
+    overflow: hidden;
+}
+
+.large-progress {
+    height: 12px;
+}
+
+.small-bar {
+    height: 6px !important;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4c8dff, #1a73e8);
+    border-radius: 20px;
+    transition: width 0.6s ease;
+}
+
+.progress-caption {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* ============================================================
+   STUDENT — HEADER AREA
+   ============================================================ */
+
+.avatar-big img {
+    width: 90px !important;
+    height: 90px !important;
+    border-radius: 50%;
+}
+
+.student-top {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.student-name {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.student-subtitle {
+    font-size: 16px;
+    color: #6b7280;
+}
+
+/* ============================================================
+   PREMIUM EVENT FEED (Student)
+   ============================================================ */
+
+.event-list-premium {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 12px;
+}
+
+.event-card {
+    display: flex;
+    gap: 18px;
+    padding: 16px 20px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    transition: 0.25s ease;
+    border-left: 5px solid #1a73e8;
+}
+
+.event-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.10);
+}
+
+.event-left {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #4c8dff, #1a73e8);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.event-xp {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.event-xp-label {
+    font-size: 12px;
+    opacity: 0.9;
+    letter-spacing: 1px;
+}
+
+.event-right {
+    flex: 1;
+}
+
+.event-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.event-reason {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 4px;
+}
+
+.event-meta {
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+/* ============================================================
+   LEADERBOARD (Shared Teacher + Student)
+   ============================================================ */
+
+.leader-entry {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: #f7f9ff;
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 12px;
+    transition: 0.25s ease;
+}
+
+.premium-hover:hover {
+    transform: translateX(6px);
+    background: #eef6ff !important;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.rank-badge {
+    font-size: 20px;
+    font-weight: 700;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.rank-1 { background: linear-gradient(45deg, #ffcb2f, #ff8b00); }
+.rank-2 { background: linear-gradient(45deg, #b3b3b3, #e6e6e6); }
+.rank-3 { background: linear-gradient(45deg, #c77b3b, #965a2c); }
+.rank-4, .rank-5, .rank-6 { background: #3d7bfd; }
+
+.avatar-ring img {
+    border-radius: 50%;
+}
+
+.avatar-ring.rank-1 img { box-shadow: 0 0 12px #ffae00; }
+.avatar-ring.rank-2 img { box-shadow: 0 0 12px #c0c0c0; }
+.avatar-ring.rank-3 img { box-shadow: 0 0 12px #9e5d2e; }
+
+.leader-name {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.leader-sub {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 6px;
+}
+
+/* ============================================================
+   SEARCH BAR + PAGINATION (Teacher Only)
+   ============================================================ */
+
+.search-wrapper {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.premium-search {
+    flex: 1;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid #dcdcdc;
+    background: #f9fbff;
+    font-size: 16px;
+    transition: 0.25s ease;
+    outline: none;
+}
+
+.premium-search:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 3px rgba(26,115,232,0.18);
+    background: white;
+}
+
+.search-btn {
+    padding: 0 18px;
+    height: 50px;
+    background: #1a73e8;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.search-btn:hover {
+    background: #0d5bcc;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.pagination-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 22px;
+    padding-top: 10px;
+}
+
+.pagination-btn {
+    background: #eef2ff;
+    padding: 10px 22px;
+    border-radius: 12px;
+    color: #1e3a8a;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.pagination-btn:hover {
+    background: #dbe4ff;
+    border-color: #1a73e8;
+    transform: translateY(-2px);
+}
+
+.pagination-btn.disabled {
+    background: #f1f1f1;
+    color: #8f8f8f;
+    cursor: not-allowed;
+    border-color: #ddd;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+.fade-in {
+    animation: fadeIn 0.35s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}

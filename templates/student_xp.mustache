@@ -1,0 +1,110 @@
+<div class="gamify-wrapper">
+
+    <!-- HEADER -->
+    <h2 class="premium-title">
+        <span class="title-icon">📊</span>
+        Your XP Progress
+    </h2>
+
+    <!-- XP OVERVIEW -->
+    <div class="premium-card xp-card fade-in">
+
+        <div class="student-top">
+            <div class="avatar avatar-big">
+                <img src="https://ui-avatars.com/api/?name={{userfullname}}&background=007bff&color=fff&rounded=true&size=90">
+            </div>
+
+            <div class="student-info">
+                <div class="student-name">{{userfullname}}</div>
+                <div class="student-subtitle">Level {{level}} — {{total_xp}} XP</div>
+            </div>
+        </div>
+
+        <!-- LEVEL PROGRESS -->
+        <div class="premium-progress mt-3 large-progress">
+            <div class="progress-fill" style="width: {{progress}}%;"></div>
+        </div>
+
+        <div class="progress-caption">
+            Progress to next level ({{min}} → {{max}})
+        </div>
+    </div>
+
+
+    <!-- RECENT XP EVENTS -->
+    <div class="premium-card fade-in">
+        <h3 class="section-title">✨ Recent XP Activity</h3>
+
+        {{#hasevents}}
+        <div class="event-list-premium">
+            {{#events}}
+            <div class="event-card fade-in">
+
+                <div class="event-left">
+                    <div class="event-xp">{{points}}</div>
+                    <div class="event-xp-label">XP</div>
+                </div>
+
+                <div class="event-right">
+                    <div class="event-title">{{source}}</div>
+
+                    {{#reason}}
+                    <div class="event-reason">✨ {{reason}}</div>
+                    {{/reason}}
+
+                    <div class="event-meta">
+                        Awarded by <strong>{{grader}}</strong> • {{time}}
+                    </div>
+                </div>
+
+            </div>
+            {{/events}}
+        </div>
+        {{/hasevents}}
+
+        {{^hasevents}}
+        <div class="empty-state fade-in">
+            No XP events yet. Start learning to earn XP!
+        </div>
+        {{/hasevents}}
+    </div>
+
+
+    <!-- LEADERBOARD -->
+    <div class="premium-card fade-in">
+        <h3 class="section-title">🏆 Leaderboard</h3>
+
+        {{#leaderboard}}
+        <div class="leader-entry premium-hover">
+
+            <div class="rank-badge rank-{{rank}}">
+                {{rank}}
+            </div>
+
+            <div class="leader-info-block">
+
+                <div class="avatar avatar-ring rank-{{rank}}">
+                    <img src="{{profileimg}}">
+                </div>
+
+                <div class="leader-text">
+                    <div class="leader-name">{{fullname}}</div>
+                    <div class="leader-sub">Level {{level}} • {{xp}} XP</div>
+
+                    <div class="premium-progress small-bar">
+                        <div class="progress-fill" style="width: {{progress}}%;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {{/leaderboard}}
+
+        {{^leaderboard}}
+        <div class="empty-state fade-in">
+            No students found in leaderboard.
+        </div>
+        {{/leaderboard}}
+    </div>
+
+</div>

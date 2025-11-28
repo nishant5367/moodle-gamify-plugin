@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/gamify/db" VERSION="2025091803" COMMENT="local_gamify DB tables">
+  <TABLES>
+
+    <!-- XP totals table -->
+    <TABLE NAME="local_gamify_xp" COMMENT="Total XP per user per course">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="totalxp" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="updatedat" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="usercourse" TYPE="unique" FIELDS="userid,courseid"/>
+      </KEYS>
+    </TABLE>
+
+    <!-- XP events log -->
+    <TABLE NAME="local_gamify_xp_events" COMMENT="Every XP event logged">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="cmid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+        <FIELD NAME="points" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+
+        <!-- FIXED: DEFAULT removed to satisfy XMLDB rules -->
+        <FIELD NAME="source" TYPE="char" LENGTH="50" NOTNULL="true"/>
+
+        <FIELD NAME="reason" TYPE="text" NOTNULL="false"/>
+        <FIELD NAME="graderid" TYPE="int" LENGTH="10" NOTNULL="false"/>
+        <FIELD NAME="createdat" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0"/>
+      </FIELDS>
+
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+
+      <!-- FIXED: standardized index definitions -->
+      <INDEXES>
+        <INDEX NAME="user_idx" UNIQUE="false" FIELDS="userid"/>
+        <INDEX NAME="course_idx" UNIQUE="false" FIELDS="courseid"/>
+        <INDEX NAME="cmid_idx" UNIQUE="false" FIELDS="cmid"/>
+      </INDEXES>
+    </TABLE>
+
+  </TABLES>
+</XMLDB>
